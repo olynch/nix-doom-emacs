@@ -41,6 +41,7 @@
        };
   */
 , dependencyOverrides ? { }
+, abortOnNotFound ? true
 , lib
 , pkgs
 , stdenv
@@ -137,6 +138,7 @@ let
   doomLocal =
     let
       straight-env = pkgs.callPackage (lock "nix-straight.el") {
+        inherit abortOnNotFound;
         emacsPackages =
           if bundledPackages then
             let
